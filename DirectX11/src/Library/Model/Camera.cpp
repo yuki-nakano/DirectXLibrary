@@ -1,4 +1,4 @@
-#include "Camera.h"
+﻿#include "Camera.h"
 
 namespace engine
 {
@@ -16,10 +16,6 @@ namespace engine
 		proj.fov = DirectX::XMConvertToRadians(45.0f);
 		proj.nearZ = 0.1f;
 		proj.farZ = 100.0f;
-	}
-
-	Camera::~Camera()
-	{
 	}
 }
 

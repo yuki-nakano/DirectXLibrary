@@ -14,7 +14,7 @@ namespace engine
 	{
 		Obj* obj = new Obj();
 
-		obj->Load(file_name_);
+		if (!obj->Load(file_name_)) { return false; }
 
 		m_objList.emplace(name_, obj);
 

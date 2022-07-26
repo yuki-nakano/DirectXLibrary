@@ -1,4 +1,4 @@
-#ifndef CAMERA_H
+ï»¿#ifndef CAMERA_H
 #define CAMERA_H
 
 #include <DirectXMath.h>
@@ -9,33 +9,33 @@
 namespace engine
 {
 	/**
-	* @brief ƒJƒƒ‰î•ñ•ÛŠÇƒNƒ‰ƒX
+	* @brief ã‚«ãƒ¡ãƒ©æƒ…å ±ä¿ç®¡ã‚¯ãƒ©ã‚¹
 	*/
 	class Camera : public Singleton<Camera>
 	{
 	public:
 		struct View
 		{
-			DirectX::XMVECTOR vecPos;	/// ƒJƒƒ‰À•W
-			DirectX::XMVECTOR vecFocus;	/// ’‹“_
-			DirectX::XMVECTOR vecUp;	/// ƒJƒƒ‰‚Ìã•ûŒüƒxƒNƒgƒ‹
+			DirectX::XMVECTOR vecPos;	/// ã‚«ãƒ¡ãƒ©åº§æ¨™
+			DirectX::XMVECTOR vecFocus;	/// æ³¨è¦–ç‚¹
+			DirectX::XMVECTOR vecUp;	/// ã‚«ãƒ¡ãƒ©ã®ä¸Šæ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
 		};
 
 		struct Proj
 		{
-			float fov;		/// ‹–ìŠp
-			float nearZ;	/// Å’Z‹——£
-			float farZ;		/// Å’·‹——£
+			float fov;		/// è¦–é‡è§’
+			float nearZ;	/// æœ€çŸ­è·é›¢
+			float farZ;		/// æœ€é•·è·é›¢
 		};
 
 	private:
 		friend class Singleton<Camera>;
 
 		Camera();
-		~Camera();
+		~Camera() = default;
 
 	public:
-		//ƒAƒNƒZƒT
+		//ã‚¢ã‚¯ã‚»ã‚µ
 
 		void SetPos(Vec4f pos_) { pos = pos_; view.vecPos = DirectX::XMVectorSet(pos.x, pos.y, pos.z, pos.w); }
 		void SetFocus(Vec4f focus_) { focus = focus_; view.vecFocus = DirectX::XMVectorSet(focus.x, focus.y, focus.z, focus.w); }
@@ -49,11 +49,11 @@ namespace engine
 		Proj GetProj() { return proj; }
 
 	private:
-		Vec4f pos;		/// ƒJƒƒ‰À•W 
-		Vec4f focus;	/// ’‹“_
-		Vec4f up;		/// ƒJƒƒ‰‚Ìã•ûŒüƒxƒNƒgƒ‹
-		View view;
-		Proj proj;
+		Vec4f pos{};	/// ã‚«ãƒ¡ãƒ©åº§æ¨™ 
+		Vec4f focus{};	/// æ³¨è¦–ç‚¹
+		Vec4f up{};		/// ã‚«ãƒ¡ãƒ©ã®ä¸Šæ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
+		View view{};
+		Proj proj{};
 	};
 }
 

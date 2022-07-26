@@ -223,6 +223,47 @@ namespace engine
 		static void ReleseObj(const std::string& name_) { m_instance->obj->DeleteObj(name_); }
 
 
+		//------------------------------------------------------------
+		//   Camera
+		//------------------------------------------------------------
+
+		/**
+		* @brief カメラの座標の変更
+		* @param pos_ カメラ座標
+		*/
+		static void SetCameraPos(const Vec4f& pos_) { m_instance->camera->SetPos(pos_); }
+
+		/**
+		* @brief 注視点座標の変更
+		* @param focus_ 注視点座標
+		*/
+		static void SetFocusPos(const Vec4f& focus_) { m_instance->camera->SetFocus(focus_); }
+
+		/**
+		* @brief 視野角の変更
+		* @param fov_ 視野角
+		*/
+		static void SetFOV(const float& fov_) { m_instance->camera->SetFOV(fov_); }
+
+		/**
+		* @brief 描画距離の変更
+		* @param near_ 手前のz座標
+		* @param far_ 奥のz座標
+		*/
+		static void SetZ(const float& near_, const float& far_) { m_instance->camera->SetZ(near_, far_); }
+
+		/**
+		* @brief カメラの座標の取得
+		* @return 現在のカメラ座標
+		*/
+		static Vec4f GetCameraPos() { return m_instance->camera->GetPos(); }
+
+		/**
+		* @brief 注視点座標の取得
+		* @return 現在の注視点座標
+		*/
+		static Vec4f GetFocusPos() { return m_instance->camera->GetFocus(); }
+
 	private:
 		// インスタンス
 		static Library* m_instance;
