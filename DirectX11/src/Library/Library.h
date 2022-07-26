@@ -83,14 +83,14 @@ namespace engine
 		* @param key_ キーの指定
 		* @return 押されていたらtrue
 		*/
-		static bool IsHeldKey(int key_) { m_instance->input->IsHeldKey(key_); }
+		static bool IsHeldKey(int key_) { return m_instance->input->IsHeldKey(key_); }
 
 		/**
 		* @brief 指定されたキーが押された瞬間なのか
 		* @param key_ キーの指定
 		* @return 押された瞬間ならtrue
 		*/
-		static bool IsPushedKey(int key_) { m_instance->input->IsPushedKey(key_); }
+		static bool IsPushedKey(int key_) { return m_instance->input->IsPushedKey(key_); }
 
 		/**
 		* @brief 指定されたキーが離されたか
