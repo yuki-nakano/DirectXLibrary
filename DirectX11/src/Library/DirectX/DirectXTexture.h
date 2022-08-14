@@ -99,6 +99,12 @@ namespace engine
 		bool CreateSampler();
 
 		/**
+		* @brief 画像透過用BlendStateの作成
+		* @return 作成成功時true
+		*/
+		bool CreateBlendState();
+
+		/**
 		* @brief 作成したbuffer等の解放
 		*/
 		void Relese();
@@ -115,6 +121,7 @@ namespace engine
 		ID3D11InputLayout* m_inputLayout{ nullptr };
 		ID3D11Buffer* m_constantBuffer{ nullptr };
 		ID3D11SamplerState* m_sampler{ nullptr };
+		ID3D11BlendState* m_blendState{ nullptr };
 	};
 }
 

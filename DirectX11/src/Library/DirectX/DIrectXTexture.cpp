@@ -24,6 +24,8 @@ namespace engine
 
 		if (!CreateSampler()) { return false; }
 
+		if (!CreateBlendState()) { return false; }
+
 		return true;
 	}
 
@@ -65,6 +67,10 @@ namespace engine
 		context->VSSetConstantBuffers(0, 1, &m_constantBuffer);
 		context->VSSetShader(ShaderManager::GetInstance()->GetVertexInterface(m_vShaderName), NULL, 0);
 		context->PSSetShader(ShaderManager::GetInstance()->GetPixelInterface(m_pShaderName), NULL, 0);
+
+		FLOAT blendFactor[4] = { D3D11_BLEND_ZERO, D3D11_BLEND_ZERO, D3D11_BLEND_ZERO, D3D11_BLEND_ZERO };
+		context->OMSetBlendState(m_blendState, blendFactor, 0xffffffff);
+
 		context->OMSetRenderTargets(1, DirectXGraphics::GetInstance()->GetRenderTargetView(), DirectXGraphics::GetInstance()->GetDepthStencilView());
 		context->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R16_UINT, 0);
 		context->PSSetShaderResources(0, 1, &texList.at(name_));
@@ -189,6 +195,31 @@ namespace engine
 		smpDesc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
 
 		if (FAILED(DirectXGraphics::GetInstance()->GetDevice()->CreateSamplerState(&smpDesc, &m_sampler)))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	bool DirectXTexture::CreateBlendState()
+	{
+		D3D11_BLEND_DESC blendDesc;
+		ZeroMemory(&blendDesc, sizeof(blendDesc));
+		blendDesc.AlphaToCoverageEnable = FALSE;
+		blendDesc.IndependentBlendEnable = FALSE;
+		blendDesc.RenderTarget[0].BlendEnable = TRUE;
+
+		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+
+		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+
+		if (FAILED(DirectXGraphics::GetInstance()->GetDevice()->CreateBlendState(&blendDesc, &m_blendState)))
 		{
 			return false;
 		}
