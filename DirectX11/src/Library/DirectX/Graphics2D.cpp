@@ -65,7 +65,7 @@ namespace engine
 		context->PSSetShader(ShaderManager::GetInstance()->GetPixelInterface(m_pShaderName), NULL, 0);
 		context->OMSetRenderTargets(1, DirectXGraphics::GetInstance()->GetRenderTargetView(), DirectXGraphics::GetInstance()->GetDepthStencilView());
 		context->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R16_UINT, 0);
-		context->DrawIndexed(6, 0, 0);
+		context->DrawIndexed(4, 0, 0);
 	}
 
 	void Graphics2D::Init()
@@ -110,7 +110,7 @@ namespace engine
 		}
 
 		D3D11_BUFFER_DESC indexBufferDesc = {
-			sizeof(UWORD) * 6,
+			sizeof(UWORD) * 4,
 			D3D11_USAGE_DEFAULT,
 			D3D11_BIND_INDEX_BUFFER,
 			0,

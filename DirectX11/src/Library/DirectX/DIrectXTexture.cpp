@@ -76,7 +76,7 @@ namespace engine
 		context->PSSetShaderResources(0, 1, &texList.at(name_));
 		context->PSSetSamplers(0, 1, &m_sampler);
 
-		context->DrawIndexed(6, 0, 0);
+		context->DrawIndexed(4, 0, 0);
 	}
 
 	void DirectXTexture::ReleseTexture(const std::string& name_)
@@ -125,7 +125,7 @@ namespace engine
 		};
 
 		D3D11_BUFFER_DESC indexBufferDesc = {
-			sizeof(UWORD) * 6,
+			sizeof(UWORD) * 4,
 			D3D11_USAGE_DEFAULT,
 			D3D11_BIND_INDEX_BUFFER,
 			0,
