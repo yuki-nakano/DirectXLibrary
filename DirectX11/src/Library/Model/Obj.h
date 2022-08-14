@@ -14,6 +14,7 @@
 namespace engine
 {
 	using VecesData = std::array<float, 3>;
+	using TextureUV = std::array<float, 2>;
 	using NomalData = std::array<float, 3>;
 
 	/**
@@ -26,12 +27,14 @@ namespace engine
 		struct ObjData
 		{
 			std::vector<VecesData> vecesDataList;	/// 頂点データ
+			std::vector<TextureUV> texDataList;	/// テクスチャデータ
 			std::vector<NomalData> nomalDataList;	/// 法線データ
 		};
 
 		struct CustomVertex
 		{
 			VecesData vecesData;
+			TextureUV texData;
 			NomalData nomalData;
 		};
 
@@ -42,6 +45,20 @@ namespace engine
 			DirectX::XMFLOAT4X4 proj;	/// プロジェクション変換行列
 			DirectX::XMFLOAT4 LightVec;	/// ライト座標行列
 			DirectX::XMFLOAT4 LightCol;	/// ライト色行列
+		};
+
+		struct MtlDate
+		{
+			std::array<float, 3> Kd;	///拡散反射成分
+			std::array<float, 3> Ks;	///鏡面反射成分
+			std::array<float, 3> Ka;	///環境光反射成分
+			float d;	///不透明度
+			//float Tr;	///透明度
+			float Ni;	///Shininess
+			int illum;	///照明モデル(1で鏡面反射無効, 2で有効)
+			//tf	///transmission color
+			float Ns;	///鏡面反射角度
+			//sharpness	///refl(反射テクスチャ)の解像度パラメータ
 		};
 
 	public:
@@ -71,7 +88,13 @@ namespace engine
 		* @param custom_vertex_[out] 解析データ保存用
 		* @return 解析成功時true
 		*/
-		bool AnalyzeData(const std::string& file_name_, std::vector<CustomVertex>& custom_vertex_);
+		bool AnalyzeObjData(const std::string& file_name_, std::vector<CustomVertex>& custom_vertex_);
+
+		/**
+		* @brief mtlファイル解析
+		* @return 解析成功時true
+		*/
+		bool AnalyzeMtlData();
 
 		/**
 		* @brief 作成したbuffer等の解放
@@ -83,8 +106,12 @@ namespace engine
 		ID3D11Buffer* m_indexBuffer{ nullptr };
 		ID3D11Buffer* m_constantBuffer{ nullptr };
 		ID3D11InputLayout* m_inputLayout{ nullptr };
+
 		int m_vertexNum;	/// 頂点数
-		std::vector<UWORD> m_index{};
+		std::map<std::string, std::vector<UWORD>> m_mtlIndex{};
+		std::vector<UWORD> m_indexList{};
+		std::string m_mtlFileName{ "none" };
+		bool m_haveTexture{ true };
 
 		std::string m_vShaderName{ "VertexObj" };	/// vertexシェーダーを呼び出す用の名前
 		std::string m_pShaderName{ "PixelBase" };	/// pixelシェーダーを呼び出す用の名前

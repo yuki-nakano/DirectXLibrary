@@ -11,12 +11,14 @@ cbuffer ConstantBuffer
 struct VSInput
 {
 	float4 pos : POSITION0;
+	float4 tex : TEXTURE;
 	float4 nor : NORMAL;
 };
 
 struct VSOutput
 {
 	float4 pos : SV_POSITION;
+	float4 tex : TEXTURE;
 	float4 col : COLOR0;
 };
 
