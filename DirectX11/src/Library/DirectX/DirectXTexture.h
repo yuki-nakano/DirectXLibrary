@@ -26,6 +26,7 @@ namespace engine
 		struct CustomVertex
 		{
 			float pos[3];	/// 座標
+			float col[4];	/// rgba
 			float uv[2];	/// uv値
 		};
 
