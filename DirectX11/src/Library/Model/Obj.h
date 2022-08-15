@@ -107,11 +107,11 @@ namespace engine
 		ID3D11Buffer* m_constantBuffer{ nullptr };
 		ID3D11InputLayout* m_inputLayout{ nullptr };
 
-		int m_vertexNum;	/// 頂点数
+		int m_vertexNum{ 0 };	/// 頂点数
 		std::map<std::string, std::vector<UWORD>> m_mtlIndex{};
 		std::vector<UWORD> m_indexList{};
 		std::string m_mtlFileName{ "none" };
-		bool m_haveTexture{ true };
+		bool m_haveTexture{ false };
 
 		std::string m_vShaderName{ "VertexObj" };	/// vertexシェーダーを呼び出す用の名前
 		std::string m_pShaderName{ "PixelBase" };	/// pixelシェーダーを呼び出す用の名前

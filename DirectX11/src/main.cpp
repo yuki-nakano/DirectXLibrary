@@ -16,7 +16,7 @@ int WINAPI WinMain(
 
 	engine::Vec3f pos(0, -10, 0);
 	engine::Vec3f rote(-20, 0, -30);
-	engine::Vec3f scale(10, 10, 10);
+	engine::Vec3f scale(5, 5, 5);
 
 	while (engine::Library::CheckMwssage())
 	{
@@ -31,8 +31,6 @@ int WINAPI WinMain(
 		engine::Library::RenderObj("hikouki", pos, rote, scale);
 
 		engine::Library::DrawTexture("texture", 300, 300, 100, 100);
-
-		rote.y += 0.01f;
 
 		engine::KeyState keystate = engine::Library::GetKeyState(KEY_A);
 

@@ -120,7 +120,7 @@ namespace engine
 		context->VSSetShader(ShaderManager::GetInstance()->GetVertexInterface(m_vShaderName), NULL, 0);
 		context->PSSetShader(ShaderManager::GetInstance()->GetPixelInterface(m_pShaderName), NULL, 0);
 		context->OMSetRenderTargets(1, DirectXGraphics::GetInstance()->GetRenderTargetView(), DirectXGraphics::GetInstance()->GetDepthStencilView());
-		context->DrawIndexed(m_vertexNum, 0, 0);
+		context->DrawIndexed(m_indexList.size(), 0, 0);
 	}
 
 	bool Obj::AnalyzeObjData(const std::string& file_name_, std::vector<CustomVertex>& custom_vertex_)
@@ -183,6 +183,7 @@ namespace engine
 			{
 				std::string m_data{};
 
+				int vertexCount{ 0 };
 				while (std::getline(ss, m_data, ' '))
 				{
 					std::array<int, 3> element;
@@ -221,6 +222,15 @@ namespace engine
 					m_indexList.push_back((UWORD)custom_vertex_.size() - 1);
 
 					m_mtlIndex.at(currentMtlName).push_back((UWORD)custom_vertex_.size() - 1);
+
+					vertexCount++;
+				}
+
+				if (vertexCount == 4)
+				{
+					int indexListSize = m_indexList.size();
+					m_indexList.push_back(m_indexList[indexListSize - 4]);
+					m_indexList.push_back(m_indexList[indexListSize - 2]);
 				}
 			}
 			else if (key.compare("mtllib") == 0)
@@ -242,7 +252,7 @@ namespace engine
 			}
 		}
 
-		m_vertexNum = m_indexList.size();
+		m_vertexNum = custom_vertex_.size();
 
 		return true;
 	}

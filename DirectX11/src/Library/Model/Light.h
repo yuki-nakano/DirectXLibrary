@@ -1,4 +1,4 @@
-#ifndef LIGHT_H
+ï»¿#ifndef LIGHT_H
 #define LIGHT_H
 
 #include "../Utility/Singleton.h"
@@ -7,7 +7,7 @@
 namespace engine
 {
 	/**
-	* @brief ƒ‰ƒCƒgî•ñ•ÛŠÇ
+	* @brief ãƒ©ã‚¤ãƒˆæƒ…å ±ä¿ç®¡
 	*/
 	class Light : public Singleton<Light>
 	{
@@ -19,7 +19,7 @@ namespace engine
 
 	public:
 
-		// ƒAƒNƒZƒT
+		// ã‚¢ã‚¯ã‚»ã‚µ
 
 		Vec4f GetPos() { return pos; }
 		Vec4f GetCol() { return col; }
@@ -27,10 +27,10 @@ namespace engine
 		void SetPos(Vec4f pos_) { pos = pos_; pos.w = 1.0f; }
 		void SetCol(Vec4f col_) { col = col_; }
 	private:
-		/// ƒ‰ƒCƒgÀ•W
-		Vec4f pos{ 0.0f, 10.0f, 0.0f, 1.0f };
+		/// ãƒ©ã‚¤ãƒˆåº§æ¨™
+		Vec4f pos{ 0.0f, 100.0f, 0.0f, 1.0f };
 
-		/// ƒ‰ƒCƒg‚ÌF
+		/// ãƒ©ã‚¤ãƒˆã®è‰²
 		Vec4f col{ 1.0f, 1.0f, 1.0f, 1.0f };
 	};
 }

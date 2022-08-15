@@ -86,7 +86,7 @@ namespace engine
 		ID3D11DepthStencilView* m_depthStencilView{ nullptr };
 
 		///バッファ初期化色
-		float m_clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		float m_clearColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
 	};
 }
 #endif // !DIRECTX_GRAPHICS_H
