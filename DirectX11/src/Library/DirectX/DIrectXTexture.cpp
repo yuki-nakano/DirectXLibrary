@@ -42,12 +42,12 @@ namespace engine
 		return true;
 	}
 
-	void DirectXTexture::DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float angle_)
+	void DirectXTexture::DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float degree_)
 	{
 		ID3D11DeviceContext* context = DirectXGraphics::GetInstance()->GetContext();
 
 		DirectX::XMMATRIX world = DirectX::XMMatrixIdentity();
-		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(angle_ * (3.14f / 180.0f));
+		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(degree_ * (3.14f / 180.0f));
 		DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(width_, height_, 1.0f);
 		DirectX::XMMATRIX translate = DirectX::XMMatrixTranslation(pos_x_, pos_y_, 0);
 

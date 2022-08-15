@@ -40,10 +40,10 @@ namespace engine
 		* @param pos_y_ 描画するy座標
 		* @param widht_	三角形の横の辺の長さ
 		* @param height_ 三角形の縦の辺の長さ
-		* @param angle_ 描画する三角形の角度
+		* @param degree_ 描画する三角形の角度
 		* @note 左上の頂点が90°の三角形の描画
 		*/
-		void DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float angle_ = 0.0f);
+		void DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f);
 
 		/**
 		* @brief 矩形の描画
@@ -51,10 +51,10 @@ namespace engine
 		* @param pos_y_ 描画する矩形の左上のy座標
 		* @param widht_ 描画する矩形の横幅
 		* @param height_ 描画する矩形の縦幅
-		* @param angle_ 描画する矩形の角度
+		* @param degree_ 描画する矩形の角度
 		* @note 各頂点の角度が90°の矩形の描画
 		*/
-		void DrawRect(float pos_x_, float pos_y_, float width_, float height_, float angle_ = 0.0f);
+		void DrawRect(float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f);
 
 		void Init();
 

@@ -9,12 +9,12 @@ namespace engine
 		Relese();
 	}
 
-	void engine::Graphics2D::DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float angle_)
+	void engine::Graphics2D::DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float degree_)
 	{
 		ID3D11DeviceContext* context = DirectXGraphics::GetInstance()->GetContext();
 
 		DirectX::XMMATRIX world = DirectX::XMMatrixIdentity();
-		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(angle_ * (3.14f / 180.0f));
+		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(degree_ * (3.14f / 180.0f));
 		DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(width_, height_, 1.0f);
 		DirectX::XMMATRIX translate = DirectX::XMMatrixTranslation(pos_x_, pos_y_, 0);
 		world = scale * rotateZ * translate;
@@ -38,12 +38,12 @@ namespace engine
 		context->DrawIndexed(3, 0, 0);
 	}
 
-	void Graphics2D::DrawRect(float pos_x_, float pos_y_, float width_, float height_, float angle_)
+	void Graphics2D::DrawRect(float pos_x_, float pos_y_, float width_, float height_, float degree_)
 	{
 		ID3D11DeviceContext* context = DirectXGraphics::GetInstance()->GetContext();
 
 		DirectX::XMMATRIX world = DirectX::XMMatrixIdentity();
-		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(angle_ / (180.0f * 3.14f));
+		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(degree_ / (180.0f * 3.14f));
 		DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(width_, height_, 1.0f);
 		DirectX::XMMATRIX translate = DirectX::XMMatrixTranslation(pos_x_, pos_y_, 0);
 

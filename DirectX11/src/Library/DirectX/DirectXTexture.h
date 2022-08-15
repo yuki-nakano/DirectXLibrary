@@ -58,9 +58,9 @@ namespace engine
 		* @param pos_y_ y座標
 		* @param widht_ 幅
 		* @param height_ 高さ
-		* @param angle_ 角度
+		* @param degree_ 角度
 		*/
-		void DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float angle_ = 0.0f);
+		void DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f);
 
 		/**
 		* @brief テクスチャの解放

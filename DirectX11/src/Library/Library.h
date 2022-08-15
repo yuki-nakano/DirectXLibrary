@@ -151,10 +151,10 @@ namespace engine
 		* @param pos_y_ 描画するy座標
 		* @param widht_	三角形の横の辺の長さ
 		* @param height_ 三角形の縦の辺の長さ
-		* @param angle_ 描画する三角形の角度
+		* @param degree_ 描画する三角形の角度
 		* @note 左上の頂点が90°の三角形の描画
 		*/
-		static void DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float angle_ = 0.0f) { m_instance->graphics2d->DrawPorigon(pos_x_, pos_y_, width_, height_, angle_); }
+		static void DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f) { m_instance->graphics2d->DrawPorigon(pos_x_, pos_y_, width_, height_, degree_); }
 
 		/**
 		* @brief 矩形の描画
@@ -162,10 +162,10 @@ namespace engine
 		* @param pos_y_ 描画する矩形の左上のy座標
 		* @param widht_ 描画する矩形の横幅
 		* @param height_ 描画する矩形の縦幅
-		* @param angle_ 描画する矩形の角度
+		* @param degree_ 描画する矩形の角度
 		* @note 各頂点の角度が90°の矩形の描画
 		*/
-		static void DrawRect(float pos_x_, float pos_y_, float width_, float height_, float angle_) { m_instance->graphics2d->DrawRect(pos_x_, pos_y_, width_, height_, angle_); }
+		static void DrawRect(float pos_x_, float pos_y_, float width_, float height_, float degree_) { m_instance->graphics2d->DrawRect(pos_x_, pos_y_, width_, height_, degree_); }
 
 
 		//------------------------------------------------------------
@@ -187,9 +187,9 @@ namespace engine
 		* @param pos_y_ 描画するテクスチャの左上のy座標
 		* @param widht_ 描画するテクスチャの横幅
 		* @param height_ 描画するテクスチャの縦幅
-		* @param angle_ 描画するテクスチャの角度
+		* @param degree_ 描画するテクスチャの角度
 		*/
-		static void DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float angle_ = 0.0f) { m_instance->texture->DrawTexture(name_, pos_x_, pos_y_, width_, height_, angle_); }
+		static void DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f) { m_instance->texture->DrawTexture(name_, pos_x_, pos_y_, width_, height_, degree_); }
 
 
 		//------------------------------------------------------------
