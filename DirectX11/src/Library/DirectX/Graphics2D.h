@@ -36,26 +36,29 @@ namespace engine
 	public:
 		/**
 		* @brief 三角形の描画
-		* @param pos_x_ 描画するx座標
-		* @param pos_y_ 描画するy座標
-		* @param widht_	三角形の横の辺の長さ
-		* @param height_ 三角形の縦の辺の長さ
+		* @param pos_ 左上の座標
+		* @param widht_ 矩形の横幅
+		* @param height_ 矩形の縦幅
+		* @param alpha_ 透過率(アルファ値)
 		* @param degree_ 描画する三角形の角度
-		* @note 左上の頂点が90°の三角形の描画
+		* @note 各頂点の角度が90°の三角形の描画
 		*/
-		void DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f);
+		void DrawPorigon(const Vec2f& pos_, const float& width_, const float& height_, const Vec3f& color_, const float& alpha_ = 1.0f, const float& degree_ = 0.0f);
 
 		/**
 		* @brief 矩形の描画
-		* @param pos_x_ 描画する矩形の左上のx座標
-		* @param pos_y_ 描画する矩形の左上のy座標
-		* @param widht_ 描画する矩形の横幅
-		* @param height_ 描画する矩形の縦幅
+		* @param pos_ 左上の座標
+		* @param widht_ 矩形の横幅
+		* @param height_ 矩形の縦幅
+		* @param alpha_ 透過率(アルファ値)
 		* @param degree_ 描画する矩形の角度
 		* @note 各頂点の角度が90°の矩形の描画
 		*/
-		void DrawRect(float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f);
+		void DrawRect(const Vec2f& pos_, const float& width_, const float& height_, const Vec3f& color_, const float& alpha_ = 1.0f, const float& degree_ = 0.0f);
 
+		/**
+		* @brief VertexShader等の作成
+		*/
 		void Init();
 
 	private:
@@ -68,6 +71,18 @@ namespace engine
 		* @brief 作成したbuffer等の解放
 		*/
 		void Relese();
+
+		/**
+		* @brief bufferの更新
+		* @param graphicsのコンテキスト
+		*/
+		void SetUpBuffers(ID3D11DeviceContext* context_, const Vec2f& pos_, const float& width_, const float& height_, const Vec3f& color_, const float& alpha_ = 1.0f, const float& degree_ = 0.0f);
+
+		/**
+		* @brief GPUへ送るデータの設定
+		* @param graphicsのコンテキスト
+		*/
+		void SetUpContext(ID3D11DeviceContext* context_);
 
 	private:
 		std::string m_vShaderName{ "Vertex2D" };	/// vertexシェーダーを呼び出す用の名前

@@ -16,6 +16,14 @@ namespace engine
 		return scale * rotateX * rotateY * rotateZ * transrate;
 	}
 
+	DirectX::XMMATRIX Matrix::CreateWorldMatrix2D(Vec2f pos_, float width_, float height_, float degree_)
+	{
+		DirectX::XMMATRIX rotateZ = DirectX::XMMatrixRotationZ(degree_ * (3.14f / 180.0f));
+		DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(width_, height_, 1.0f);
+		DirectX::XMMATRIX translate = DirectX::XMMatrixTranslation(pos_.x, pos_.y, 0);
+		return scale * rotateZ * translate;
+	}
+
 	DirectX::XMMATRIX Matrix::CreateViewMatrix()
 	{
 		Camera::View view = Camera::GetInstance()->GetView();

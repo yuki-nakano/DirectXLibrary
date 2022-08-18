@@ -3,6 +3,7 @@
 
 #include <d3d11.h>
 #include <DirectXMath.h>
+#include <string>
 
 #include "../Utility/Singleton.h" 
 
@@ -39,6 +40,17 @@ namespace engine
 		*/
 		void FinishRendering();
 
+		/**
+		* @brief BlendStateの設定
+		*/
+		void SetUpBlendState();
+
+		/**
+		* @brief GUI送信用データの設定
+		* @param v_shader_name_ 登録したvertexシェーダーの名前
+		* @param p_shader_name_ 登録したpixelシェーダーの名前
+		*/
+		void SetUpContext(const std::string& v_shader_name_, const std::string& p_shader_name_);
 
 		//アクセサ
 
@@ -67,6 +79,12 @@ namespace engine
 		bool CreateDepthAndStencilView();
 
 		/**
+		* @brief 画像透過用BlendStateの作成
+		* @return 作成成功時true
+		*/
+		bool CreateBlendState();
+
+		/**
 		* @brief ViewPortの設定
 		*/
 		void SetUpViewPort();
@@ -77,13 +95,13 @@ namespace engine
 		void Release();
 
 	private:
-
 		ID3D11Device* m_device{ nullptr };
 		IDXGISwapChain* m_swapChain{ nullptr };
 		D3D_FEATURE_LEVEL m_fetureLevel{};
 		ID3D11DeviceContext* m_context{ nullptr };
 		ID3D11RenderTargetView* m_renderTargetView{ nullptr };
 		ID3D11DepthStencilView* m_depthStencilView{ nullptr };
+		ID3D11BlendState* m_blendState{ nullptr };
 
 		///バッファ初期化色
 		float m_clearColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };

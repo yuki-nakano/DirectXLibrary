@@ -1,7 +1,7 @@
 ﻿#include "DirectXGraphics.h"
 #include "../WindowsAPI/WindowsAPI.h"
 
-#include <string>
+#include "../Shader/ShaderManager.h"
 
 #pragma comment(lib,"d3d11.lib")
 
@@ -24,6 +24,8 @@ namespace engine
 		if (!CreateRenderTargetView()) { return false; }
 
 		if (!CreateDepthAndStencilView()) { return false; }
+
+		if (!CreateBlendState()) { return false; }
 
 		SetUpViewPort();
 
@@ -50,6 +52,21 @@ namespace engine
 	{
 		//バッファの切り替え
 		m_swapChain->Present(0, 0);
+	}
+
+	void DirectXGraphics::SetUpBlendState()
+	{
+		FLOAT blendFactor[4] = { D3D11_BLEND_ZERO, D3D11_BLEND_ZERO, D3D11_BLEND_ZERO, D3D11_BLEND_ZERO };
+		m_context->OMSetBlendState(m_blendState, blendFactor, 0xffffffff);
+	}
+
+	void DirectXGraphics::SetUpContext(const std::string& v_shader_name_, const std::string& p_shader_name_)
+	{
+		m_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		m_context->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
+
+		m_context->VSSetShader(ShaderManager::GetInstance()->GetVertexInterface(v_shader_name_), NULL, 0);
+		m_context->PSSetShader(ShaderManager::GetInstance()->GetPixelInterface(p_shader_name_), NULL, 0);
 	}
 
 	bool DirectXGraphics::CreateDeviceAndSwapChain()
@@ -153,6 +170,31 @@ namespace engine
 			depthStencilTexture,
 			&depthStencilDesc,
 			&m_depthStencilView)))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	bool DirectXGraphics::CreateBlendState()
+	{
+		D3D11_BLEND_DESC blendDesc;
+		ZeroMemory(&blendDesc, sizeof(blendDesc));
+		blendDesc.AlphaToCoverageEnable = FALSE;
+		blendDesc.IndependentBlendEnable = FALSE;
+		blendDesc.RenderTarget[0].BlendEnable = TRUE;
+
+		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+
+		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+
+		if (FAILED(DirectXGraphics::GetInstance()->GetDevice()->CreateBlendState(&blendDesc, &m_blendState)))
 		{
 			return false;
 		}

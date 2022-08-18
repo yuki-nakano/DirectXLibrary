@@ -1,4 +1,4 @@
-#ifndef MATRIX_H
+ï»¿#ifndef MATRIX_H
 #define MATRIX_H
 
 #include <DirectXMath.h>
@@ -9,7 +9,7 @@
 namespace engine
 {
 	/**
-	* @brief s—ñ¶¬ƒNƒ‰ƒX
+	* @brief è¡Œåˆ—ç”Ÿæˆã‚¯ãƒ©ã‚¹
 	*/
 	class Matrix : public Singleton<Matrix>
 	{
@@ -21,49 +21,59 @@ namespace engine
 
 	public:
 		/**
-		* @breif ƒ[ƒ‹ƒhÀ•W•ÏŠ·s—ñ‚Ì¶¬
-		* @param pos_ ˆÚ“®—Ê
-		* @param rote_ Šp“x
-		* @param scale_ ‘å‚«‚³
-		* @retun ƒ[ƒ‹ƒhÀ•W•ÏŠ·s—ñ
+		* @breif ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™å¤‰æ›è¡Œåˆ—ã®ç”Ÿæˆ
+		* @param pos_ ç§»å‹•é‡
+		* @param rote_ è§’åº¦
+		* @param scale_ å¤§ãã•
+		* @retun ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™å¤‰æ›è¡Œåˆ—
 		*/
 		DirectX::XMMATRIX CreateWorldMatrix(Vec3f pos_, Vec3f rote_, Vec3f scale_);
 
 		/**
-		* @breif ƒrƒ…[À•W•ÏŠ·s—ñ‚Ì¶¬
-		* @retun ƒrƒ…[À•W•ÏŠ·s—ñ
+		* @breif 2Dç”¨ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™å¤‰æ›è¡Œåˆ—ã®ç”Ÿæˆ
+		* @param pos_ åº§æ¨™
+		* @param width_ æ¨ªå¹…
+		* @param height_ ç¸¦å¹…
+		* @param degree_ è§’åº¦
+		* @retun ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™å¤‰æ›è¡Œåˆ—
+		*/
+		DirectX::XMMATRIX CreateWorldMatrix2D(Vec2f pos_, float width_, float height_, float degree_);
+
+		/**
+		* @breif ãƒ“ãƒ¥ãƒ¼åº§æ¨™å¤‰æ›è¡Œåˆ—ã®ç”Ÿæˆ
+		* @retun ãƒ“ãƒ¥ãƒ¼åº§æ¨™å¤‰æ›è¡Œåˆ—
 		*/
 		DirectX::XMMATRIX CreateViewMatrix();
 
 		/**
-		* @breif ƒvƒƒWƒFƒNƒVƒ‡ƒ“À•W•ÏŠ·s—ñ‚Ì¶¬
-		* @retun ƒvƒƒWƒFƒNƒVƒ‡ƒ“À•W•ÏŠ·s—ñ
+		* @breif ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³åº§æ¨™å¤‰æ›è¡Œåˆ—ã®ç”Ÿæˆ
+		* @retun ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³åº§æ¨™å¤‰æ›è¡Œåˆ—
 		*/
 		DirectX::XMMATRIX CreateProjMatrix();
 
 		/**
-		* @brief ƒrƒ…[ƒ|[ƒg—ps—ñ‚Ìæ“¾
+		* @brief ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆç”¨è¡Œåˆ—ã®å–å¾—
 		*/
 		DirectX::XMFLOAT4 GetViewportMatrix();
 
 		/**
-		* @brief ƒ‰ƒCƒg‚ÌÀ•Ws—ñ‚Ì¶¬
-		* @return ƒ‰ƒCƒgÀ•W‚Ìs—ñ
+		* @brief ãƒ©ã‚¤ãƒˆã®åº§æ¨™è¡Œåˆ—ã®ç”Ÿæˆ
+		* @return ãƒ©ã‚¤ãƒˆåº§æ¨™ã®è¡Œåˆ—
 		*/
 		DirectX::XMVECTOR CreateLightPosMatrix();
 
 		/**
-		* @brief ƒ‰ƒCƒg‚ÌFs—ñ‚Ì¶¬
-		* @return ƒ‰ƒCƒg‚ÌFs—ñ
+		* @brief ãƒ©ã‚¤ãƒˆã®è‰²è¡Œåˆ—ã®ç”Ÿæˆ
+		* @return ãƒ©ã‚¤ãƒˆã®è‰²è¡Œåˆ—
 		*/
 		DirectX::XMFLOAT4 CreateLightColMatrix();
 
-		// ƒAƒNƒZƒT
+		// ã‚¢ã‚¯ã‚»ã‚µ
 
 		void SetViewport(Vec2f viewport_) { viewport = viewport_; }
 
 	private:
-		Vec2f viewport{};	/// ƒrƒ…[ƒ|[ƒg
+		Vec2f viewport{};	/// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆ
 	};
 }
 

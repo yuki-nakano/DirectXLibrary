@@ -52,15 +52,15 @@ namespace engine
 		bool LoadTexture(const std::wstring& file_name_, const std::string& name_);
 
 		/**
-		* @brief
+		* @brief 画像の描画
 		* @param name_ LoadTexture関数で登録した名前
-		* @param pos_x_ x座標
-		* @param pos_y_ y座標
-		* @param widht_ 幅
-		* @param height_ 高さ
-		* @param degree_ 角度
+		* @param pos_ 画像を描画する座標
+		* @param widht_ 画像の幅
+		* @param height_ 画像の高さ
+		* @param degree_ 画像の角度
+		* @param alpha_ 画像の透過度(アルファ値)
 		*/
-		void DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f);
+		void DrawTexture(const std::string& name_, const Vec2f& pos_, const float& width_, const float& height_, const float& degree_ = 0.0f, const float& alpha_ = 1.0f);
 
 		/**
 		* @brief テクスチャの解放
@@ -100,12 +100,6 @@ namespace engine
 		bool CreateSampler();
 
 		/**
-		* @brief 画像透過用BlendStateの作成
-		* @return 作成成功時true
-		*/
-		bool CreateBlendState();
-
-		/**
 		* @brief 作成したbuffer等の解放
 		*/
 		void Relese();
@@ -122,7 +116,6 @@ namespace engine
 		ID3D11InputLayout* m_inputLayout{ nullptr };
 		ID3D11Buffer* m_constantBuffer{ nullptr };
 		ID3D11SamplerState* m_sampler{ nullptr };
-		ID3D11BlendState* m_blendState{ nullptr };
 	};
 }
 

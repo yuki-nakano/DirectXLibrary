@@ -147,25 +147,27 @@ namespace engine
 
 		/**
 		* @brief 三角形の描画
-		* @param pos_x_ 描画するx座標
-		* @param pos_y_ 描画するy座標
+		* @param pos_ 描画する三角形の座標
 		* @param widht_	三角形の横の辺の長さ
 		* @param height_ 三角形の縦の辺の長さ
+		* @param colot_ rgb
+		* @param alpha アルファ値
 		* @param degree_ 描画する三角形の角度
 		* @note 左上の頂点が90°の三角形の描画
 		*/
-		static void DrawPorigon(float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f) { m_instance->graphics2d->DrawPorigon(pos_x_, pos_y_, width_, height_, degree_); }
+		static void DrawPorigon(const Vec2f& pos_, const float& width_, const float& height_, const Vec3f& color_, const float& alpha_ = 1.0f, const float& degree_ = 0.0f) { m_instance->graphics2d->DrawPorigon(pos_, width_, height_, color_, alpha_, degree_); }
 
 		/**
 		* @brief 矩形の描画
-		* @param pos_x_ 描画する矩形の左上のx座標
-		* @param pos_y_ 描画する矩形の左上のy座標
+		* @param pos_ 描画する矩形の左上のx座標
 		* @param widht_ 描画する矩形の横幅
 		* @param height_ 描画する矩形の縦幅
+		* @param colot_ rgb
+		* @param alpha アルファ値
 		* @param degree_ 描画する矩形の角度
 		* @note 各頂点の角度が90°の矩形の描画
 		*/
-		static void DrawRect(float pos_x_, float pos_y_, float width_, float height_, float degree_) { m_instance->graphics2d->DrawRect(pos_x_, pos_y_, width_, height_, degree_); }
+		static void DrawRect(const Vec2f& pos_, const float& width_, const float& height_, const Vec3f& color_, const float& alpha_ = 1.0f, const float& degree_ = 0.0f) { m_instance->graphics2d->DrawRect(pos_, width_, height_, color_, alpha_, degree_); }
 
 
 		//------------------------------------------------------------
@@ -181,15 +183,15 @@ namespace engine
 		static bool LoadTexture(const std::wstring& file_name_, const std::string& name_) { return m_instance->texture->LoadTexture(file_name_, name_); }
 
 		/**
-		* @brief テクスチャの描画
+		* @brief 画像の描画
 		* @param name_ LoadTexture関数で登録した名前
-		* @param pos_x_ 描画するテクスチャの左上のx座標
-		* @param pos_y_ 描画するテクスチャの左上のy座標
-		* @param widht_ 描画するテクスチャの横幅
-		* @param height_ 描画するテクスチャの縦幅
-		* @param degree_ 描画するテクスチャの角度
+		* @param pos_ 画像を描画する座標
+		* @param widht_ 画像の幅
+		* @param height_ 画像の高さ
+		* @param degree_ 画像の角度
+		* @param alpha_ 画像の透過度(アルファ値)
 		*/
-		static void DrawTexture(const std::string& name_, float pos_x_, float pos_y_, float width_, float height_, float degree_ = 0.0f) { m_instance->texture->DrawTexture(name_, pos_x_, pos_y_, width_, height_, degree_); }
+		static void DrawTexture(const std::string& name_, const Vec2f& pos_, const float& width_, const float& height_, const float& degree_ = 0.0f, const float& alpha_ = 1.0f) { m_instance->texture->DrawTexture(name_, pos_, width_, height_, degree_, alpha_); }
 
 
 		//------------------------------------------------------------
