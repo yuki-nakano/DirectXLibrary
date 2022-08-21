@@ -8,6 +8,25 @@
 
 namespace engine
 {
+	Direct2D::~Direct2D()
+	{
+		m_deviceDxgi->Release();
+		m_factory->Release();
+		m_writeFactory->Release();
+		m_textFormat->Release();
+		m_renderTarget2D->Release();
+		m_solidBrush->Release();
+		m_backBuffer->Release();
+
+		m_deviceDxgi = nullptr;
+		m_factory = nullptr;
+		m_writeFactory = nullptr;
+		m_textFormat = nullptr;
+		m_renderTarget2D = nullptr;
+		m_solidBrush = nullptr;
+		m_backBuffer = nullptr;
+	}
+
 	bool Direct2D::Init()
 	{
 		D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &m_factory);

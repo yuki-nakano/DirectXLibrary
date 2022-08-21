@@ -16,7 +16,7 @@ namespace engine
 		friend class Singleton<Direct2D>;
 
 		Direct2D() = default;
-		~Direct2D() {};
+		~Direct2D();
 
 	public:
 		/**
