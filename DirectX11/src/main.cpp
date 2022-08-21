@@ -22,7 +22,7 @@ int WINAPI WinMain(
 
 	int count = 0;
 
-	while (engine::Library::CheckMwssage())
+	while (engine::Library::CheckMessage())
 	{
 		// ライブラリ更新
 		engine::Library::Update();

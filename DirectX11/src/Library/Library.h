@@ -66,7 +66,7 @@ namespace engine
 		* @return ループ終了時false
 		* @note ゲームループ毎に呼び出す
 		*/
-		static bool CheckMwssage() { return m_instance->window->CheckMessage(); }
+		static bool CheckMessage() { return m_instance->window->CheckMessage(); }
 
 
 		//------------------------------------------------------------
@@ -266,6 +266,7 @@ namespace engine
 		* @return 現在の注視点座標
 		*/
 		static Vec4f GetFocusPos() { return m_instance->camera->GetFocus(); }
+
 
 		//------------------------------------------------------------
 		//   Direct2D

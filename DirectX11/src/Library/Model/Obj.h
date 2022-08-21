@@ -111,7 +111,7 @@ namespace engine
 		std::map<std::string, std::vector<UWORD>> m_mtlIndex{};
 		std::vector<UWORD> m_indexList{};
 		std::string m_mtlFileName{ "none" };
-		bool m_haveTexture{ false };
+		bool m_isAttachedTexture{ false };	///テクスチャが付属しているか
 
 		std::string m_vShaderName{ "VertexObj" };	/// vertexシェーダーを呼び出す用の名前
 		std::string m_pShaderName{ "PixelBase" };	/// pixelシェーダーを呼び出す用の名前
