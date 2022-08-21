@@ -15,6 +15,7 @@ namespace engine
 		matrix = Matrix::CreateInstance();
 		shader = ShaderManager::CreateInstance();
 		graphics2d = Graphics2D::CreateInstance();
+		direct2D = Direct2D::CreateInstance();
 		texture = DirectXTexture::CreateInstance();
 		obj = ObjManager::CreateInstance();
 	}
@@ -23,6 +24,7 @@ namespace engine
 	{
 		input->DeleteInstance();
 		mouse->DeleteInstance();
+		direct2D->DeleteInstance();
 		graphics->DeleteInstance();
 		camera->DeleteInstance();
 		light->DeleteInstance();
@@ -34,6 +36,7 @@ namespace engine
 
 		input = nullptr;
 		mouse = nullptr;
+		direct2D = nullptr;
 		graphics = nullptr;
 		camera = nullptr;
 		light = nullptr;
@@ -61,6 +64,8 @@ namespace engine
 		m_instance->graphics2d->Init();
 
 		m_instance->texture->Init();
+
+		m_instance->direct2D->Init();
 
 		return true;
 	}

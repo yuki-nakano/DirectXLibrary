@@ -2,6 +2,7 @@
 #include "../WindowsAPI/WindowsAPI.h"
 
 #include "../Shader/ShaderManager.h"
+#include "Direct2D.h"
 
 #pragma comment(lib,"d3d11.lib")
 
@@ -34,24 +35,29 @@ namespace engine
 
 	void DirectXGraphics::StartRendering()
 	{
-		//RenderTargetViewの初期化
+		// RenderTargetViewの初期化
 		m_context->ClearRenderTargetView(
 			m_renderTargetView,
 			m_clearColor);
 
-		//DepthStenciの初期化
+		// DepthStenciの初期化
 		m_context->ClearDepthStencilView(
 			m_depthStencilView,
 			D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
 			1.0f,
 			0);
 
+		// 2d描画用
+		Direct2D::GetInstance()->GetRenderTarget2D()->BeginDraw();
 	}
 
 	void DirectXGraphics::FinishRendering()
 	{
+		// 2d描画用
+		Direct2D::GetInstance()->GetRenderTarget2D()->EndDraw();
+
 		//バッファの切り替え
-		m_swapChain->Present(0, 0);
+		m_swapChain->Present(1, 0);
 	}
 
 	void DirectXGraphics::SetUpBlendState()
@@ -95,7 +101,7 @@ namespace engine
 			nullptr,
 			D3D_DRIVER_TYPE_HARDWARE,
 			nullptr,
-			0,
+			D3D11_CREATE_DEVICE_BGRA_SUPPORT,
 			nullptr,
 			0,
 			D3D11_SDK_VERSION,

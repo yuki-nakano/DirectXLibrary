@@ -18,6 +18,7 @@
 #include "DirectX/Matrix.h"
 #include "DirectX/DirectXUtility.h" 
 #include "DirectX/DirectXTexture.h"
+#include "DirectX/Direct2D.h"
 
 #include <memory>
 
@@ -266,6 +267,17 @@ namespace engine
 		*/
 		static Vec4f GetFocusPos() { return m_instance->camera->GetFocus(); }
 
+		//------------------------------------------------------------
+		//   Direct2D
+		//------------------------------------------------------------
+
+		/**
+		* @brief 文字列の描画
+		* @param text_ 描画する文字列
+		* @param pos_ 描画する座標
+		*/
+		static void DrawTextData(const std::wstring& text_, Vec2f pos_) { m_instance->direct2D->DrawTextData(text_, pos_); }
+
 	private:
 		// インスタンス
 		static Library* m_instance;
@@ -276,6 +288,7 @@ namespace engine
 		DirectXGraphics* graphics{ nullptr };
 		ShaderManager* shader{ nullptr };
 		Graphics2D* graphics2d{ nullptr };
+		Direct2D* direct2D{ nullptr };
 		DirectXTexture* texture{ nullptr };
 		ObjManager* obj{ nullptr };
 		Camera* camera{ nullptr };

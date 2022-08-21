@@ -58,6 +58,7 @@ namespace engine
 		ID3D11DeviceContext* GetContext() const { return m_context; }
 		ID3D11RenderTargetView** GetRenderTargetView() { return &m_renderTargetView; }
 		ID3D11DepthStencilView* GetDepthStencilView()const { return m_depthStencilView; }
+		IDXGISwapChain* GetSwapChain() const { return m_swapChain; }
 
 	private:
 		/**

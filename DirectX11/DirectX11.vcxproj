@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Library\DirectX\Direct2D.cpp" />
     <ClCompile Include="src\Library\DirectX\DirectXGraphics.cpp" />
     <ClCompile Include="src\Library\DirectX\DirectXTexture.cpp" />
     <ClCompile Include="src\Library\DirectX\Graphics2D.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Library\DirectX\Direct2D.h" />
     <ClInclude Include="src\Library\DirectX\DirectXGraphics.h" />
     <ClInclude Include="src\Library\DirectX\DirectXTexture.h" />
     <ClInclude Include="src\Library\DirectX\DirectXUtility.h" />

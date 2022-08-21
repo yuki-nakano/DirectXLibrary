@@ -82,6 +82,9 @@
     <ClCompile Include="src\Library\Model\Camera.cpp">
       <Filter>Library\Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\Library\DirectX\Direct2D.cpp">
+      <Filter>Library\DirectX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Library\DirectX\DirectXGraphics.h">
@@ -140,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="src\Library\Model\Light.h">
       <Filter>Library\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Library\DirectX\Direct2D.h">
+      <Filter>Library\DirectX</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
