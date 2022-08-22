@@ -19,6 +19,7 @@ namespace engine
 		if (!CreateShader("src/Library/cso/Vertex2D.cso", "Vertex2D", ShaderType::Vertex)) { return false; }
 
 		// obj用
+		if (!CreateShader("src/Library/cso/PixelObj.cso", "PixelObj", ShaderType::Pixel)) { return false; }
 		if (!CreateShader("src/Library/cso/VertexObj.cso", "VertexObj", ShaderType::Vertex)) { return false; }
 
 		// テクスチャ用

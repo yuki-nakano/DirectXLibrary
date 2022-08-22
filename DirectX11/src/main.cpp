@@ -10,15 +10,15 @@ int WINAPI WinMain(
 {
 	// ライブラリ初期化
 	if (!engine::Library::Init("test", 640, 480)) { return 0; }
-	engine::Library::LoadObj("res/BirchTree_1.obj", "hikouki");
+	engine::Library::LoadObj("res/Cube.obj", "hikouki");
 	engine::Library::LoadTexture(L"res/test.png", "texture");
 
-	std::vector<int> keyList = { KEY_A };
+	std::vector<int> keyList = { KEY_A ,KEY_D, KEY_W, KEY_S };
 	engine::Library::RegisterKey(keyList);
 
-	engine::Vec3f pos(1, -10, 0);
-	engine::Vec3f rote(-20, 0, -30);
-	engine::Vec3f scale(5, 5, 5);
+	engine::Vec3f pos(0, -10, 0);
+	engine::Vec3f rote(0, 0, 0);
+	engine::Vec3f scale(8, 8, 8);
 
 	int count = 0;
 
@@ -30,11 +30,12 @@ int WINAPI WinMain(
 		// 描画開始
 		engine::Library::StartRendering();
 
-		engine::Library::DrawRect(engine::Vec2f(100.0f, 100.0f), 100, 100, engine::Vec3f(0.0f, 0.0f, 1.0f), 0.3f, 0.0f);
+		//engine::Library::DrawRect(engine::Vec2f(100.0f, 100.0f), 100, 100, engine::Vec3f(0.0f, 0.0f, 1.0f), 0.3f, 0.0f);
 
+		rote.y += 1;
 		engine::Library::RenderObj("hikouki", pos, rote, scale);
 
-		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 100, 100, 0.0f, 0.2f);
+		//engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 100, 100, 0.0f, 0.2f);
 
 		engine::KeyState keystate = engine::Library::GetKeyState(KEY_A);
 
@@ -44,7 +45,7 @@ int WINAPI WinMain(
 			//engine::Library::RenderObj("hikouki", pos, rote, scale);
 			break;
 		case engine::KeyState::Held:
-			//pos.x += 1.0f;
+			pos.z -= 1.0f;
 			//engine::Library::RenderObj("hikouki", pos, rote, scale);
 			break;
 		case engine::KeyState::Pushed:

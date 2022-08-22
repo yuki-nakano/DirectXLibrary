@@ -34,8 +34,8 @@ namespace engine
 		struct CustomVertex
 		{
 			VecesData vecesData;
-			TextureUV texData;
 			NomalData nomalData;
+			TextureUV texData;
 		};
 
 		struct ConstantBuffer
@@ -45,19 +45,21 @@ namespace engine
 			DirectX::XMFLOAT4X4 proj;	/// プロジェクション変換行列
 			DirectX::XMFLOAT4 LightVec;	/// ライト座標行列
 			DirectX::XMFLOAT4 LightCol;	/// ライト色行列
+			DirectX::XMFLOAT4 mtlDiffuse;	/// ディフューズ
+			DirectX::XMFLOAT4 mtlAmbient;	/// アンビエント
 		};
 
 		struct MtlDate
 		{
 			std::array<float, 3> Kd;	///拡散反射成分
-			std::array<float, 3> Ks;	///鏡面反射成分
+			//std::array<float, 3> Ks;	///鏡面反射成分
 			std::array<float, 3> Ka;	///環境光反射成分
-			float d;	///不透明度
+			//float d;	///不透明度
 			//float Tr;	///透明度
-			float Ni;	///Shininess
-			int illum;	///照明モデル(1で鏡面反射無効, 2で有効)
+			//float Ni;	///Shininess
+			//int illum;	///照明モデル(1で鏡面反射無効, 2で有効)
 			//tf	///transmission color
-			float Ns;	///鏡面反射角度
+			//float Ns;	///鏡面反射角度
 			//sharpness	///refl(反射テクスチャ)の解像度パラメータ
 		};
 
@@ -90,11 +92,16 @@ namespace engine
 		*/
 		bool AnalyzeObjData(const std::string& file_name_, std::vector<CustomVertex>& custom_vertex_);
 
+		std::array<float, 3> Analyze3Data(std::string str_);
+		std::array<float, 2> AnalyzeVTKey(std::stringstream ss);
+		void AnalyzeVNKey();
+		void AnalyzeFKey();
+
 		/**
 		* @brief mtlファイル解析
 		* @return 解析成功時true
 		*/
-		bool AnalyzeMtlData();
+		bool AnalyzeMtlData(std::string file_name_);
 
 		/**
 		* @brief 作成したbuffer等の解放
@@ -103,19 +110,18 @@ namespace engine
 
 	private:
 		ID3D11Buffer* m_vertexBuffer{ nullptr };
-		ID3D11Buffer* m_indexBuffer{ nullptr };
+		std::vector<ID3D11Buffer*> m_indexBufferList{ nullptr };
 		ID3D11Buffer* m_constantBuffer{ nullptr };
 		ID3D11InputLayout* m_inputLayout{ nullptr };
 
-		int m_vertexNum{ 0 };	/// 頂点数
-		std::map<std::string, std::vector<UWORD>> m_mtlIndex{};
-		std::vector<UWORD> m_indexList{};
+		std::map<std::string, std::vector<UINT>> m_mtlIndex{};
 		std::string m_mtlFileName{ "none" };
+		std::map<std::string, MtlDate> m_mtlDataList{};
 		bool m_isAttachedTexture{ false };	///テクスチャが付属しているか
+		bool m_isAttachedMtl{ true };
 
 		std::string m_vShaderName{ "VertexObj" };	/// vertexシェーダーを呼び出す用の名前
-		std::string m_pShaderName{ "PixelBase" };	/// pixelシェーダーを呼び出す用の名前
-
+		std::string m_pShaderName{ "PixelObj" };	/// pixelシェーダーを呼び出す用の名前
 	};
 }
 

@@ -4,27 +4,31 @@ cbuffer ConstantBuffer
 	float4x4 world;
 	float4x4 view;
 	float4x4 proj;
-	float4	LightVector;
-	float4	LightColor;
+	float4 LightVector;
+	float4 LightColor;
+	float4 ambient;
+	float4 diffuse;
 };
 
 struct VSInput
 {
 	float4 pos : POSITION0;
-	float4 tex : TEXTURE;
 	float4 nor : NORMAL;
+	float4 tex : TEXTURE;
+
 };
 
 struct VSOutput
 {
 	float4 pos : SV_POSITION;
-	float4 tex : TEXTURE;
 	float4 col : COLOR0;
 };
 
 VSOutput main(VSInput input)
 {
-	VSOutput output = input;
+	VSOutput output;
+
+	output.pos = input.pos;
 
 	output.pos = mul(output.pos, world);
 	output.pos = mul(output.pos, view);
@@ -40,6 +44,7 @@ VSOutput main(VSInput input)
 
 	// ライトのカラー * 光のあたり加減
 	output.col = LightColor * rad;
+	output.col[3] = 1.0f;
 
 	return output;
 }

@@ -167,5 +167,8 @@
     <FxCompile Include="src\Library\HLSL\VertexTex.hlsl">
       <Filter>Library\HLSL</Filter>
     </FxCompile>
+    <FxCompile Include="src\Library\HLSL\PixelObj.hlsl">
+      <Filter>Library\HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
