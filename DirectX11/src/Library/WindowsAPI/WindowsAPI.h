@@ -1,4 +1,4 @@
-#ifndef WINDOWS_API_H
+ï»¿#ifndef WINDOWS_API_H
 #define WINDOWS_API_H
 
 #include <Windows.h>
@@ -9,7 +9,7 @@
 namespace engine
 {
 	/**
-	* @brief Window•`‰æ
+	* @brief Windowæç”»
 	*/
 	class WindowsAPI : public Singleton<WindowsAPI>
 	{
@@ -21,21 +21,21 @@ namespace engine
 
 	public:
 		/**
-		* @brief window‚©‚ç‚ÌƒƒbƒZ[ƒWƒ`ƒFƒbƒN
-		* @return I—¹‚Éfalse
+		* @brief windowã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒã‚§ãƒƒã‚¯
+		* @return çµ‚äº†æ™‚ã«false
 		*/
 		bool CheckMessage();
 
 		/**
-		* @brief ƒEƒCƒ“ƒhƒE•`‰æ
-		* @param window_name_ ƒEƒBƒ“ƒhƒE‚Ì–¼‘O
-		* @param widht_ ƒEƒBƒ“ƒhƒE‚Ì‰¡•
-		* @param height_ ƒEƒBƒ“ƒhƒE‚Ìc•
+		* @brief ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦æç”»
+		* @param window_name_ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®åå‰
+		* @param widht_ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®æ¨ªå¹…
+		* @param height_ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ç¸¦å¹…
 		*/
 		bool Draw(const std::string& window_name_, const int& widht_, const int& height_);
 
 		/**
-		* @brief ƒvƒƒV[ƒWƒƒ
+		* @brief ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 		*/
 		static LRESULT CALLBACK Procedure(HWND window_handle_, UINT message_id_, WPARAM wparam, LPARAM lparam);
 

@@ -14,7 +14,7 @@
 namespace engine
 {
 	/**
-	* @briref シェーダー管理クラス
+	* @brief シェーダー管理クラス
 	*/
 	class ShaderManager : public Singleton<ShaderManager>
 	{

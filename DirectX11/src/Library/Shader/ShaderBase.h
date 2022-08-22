@@ -13,6 +13,9 @@ namespace engine
 		Vertex	/// バーテックスシェーダー
 	};
 
+	/**
+	* @brief シェーダー基底クラス
+	*/
 	class ShaderBase
 	{
 	public:

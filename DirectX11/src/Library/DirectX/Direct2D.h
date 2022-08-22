@@ -10,6 +10,9 @@
 
 namespace engine
 {
+	/**
+	* @brief 2D描画クラス
+	*/
 	class Direct2D : public Singleton<Direct2D>
 	{
 	private:

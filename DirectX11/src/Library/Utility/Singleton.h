@@ -3,7 +3,7 @@
 
 namespace engine
 {
-	//singletonパターン
+	/// singletonパターン
 	template <class T>
 	class Singleton
 	{
