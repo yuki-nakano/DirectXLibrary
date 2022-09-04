@@ -78,6 +78,7 @@ namespace engine
 		context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &strides, &offsets);
 		context->VSSetConstantBuffers(0, 1, &m_constantBuffer);
 		context->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R16_UINT, 0);
+		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 		context->PSSetShaderResources(0, 1, &texList.at(name_));
 		context->PSSetSamplers(0, 1, &m_sampler);
 

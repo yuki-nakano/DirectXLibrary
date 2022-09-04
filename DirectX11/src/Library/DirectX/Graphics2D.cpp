@@ -173,5 +173,6 @@ namespace engine
 		context_->IASetVertexBuffers(0, 1, &m_vertexBuffer, &strides, &offsets);
 		context_->VSSetConstantBuffers(0, 1, &m_constantBuffer);
 		context_->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R16_UINT, 0);
+		context_->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 	}
 }

@@ -114,6 +114,7 @@ namespace engine
 		ID3D11Buffer* m_constantBuffer{ nullptr };
 		ID3D11InputLayout* m_inputLayout{ nullptr };
 
+		std::vector<CustomVertex> m_customVertex;
 		std::map<std::string, std::vector<UINT>> m_mtlIndex{};
 		std::string m_mtlFileName{ "none" };
 		std::map<std::string, MtlDate> m_mtlDataList{};

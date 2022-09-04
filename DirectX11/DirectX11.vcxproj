@@ -33,6 +33,7 @@
     <ClCompile Include="src\Library\Shader\ShaderBase.cpp" />
     <ClCompile Include="src\Library\Shader\ShaderManager.cpp" />
     <ClCompile Include="src\Library\Shader\VertexShader.cpp" />
+    <ClCompile Include="src\Library\Utility\Collision.cpp" />
     <ClCompile Include="src\Library\WindowsAPI\Input.cpp" />
     <ClCompile Include="src\Library\WindowsAPI\Mouse.cpp" />
     <ClCompile Include="src\Library\WindowsAPI\WindowsAPI.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="src\Library\Shader\ShaderBase.h" />
     <ClInclude Include="src\Library\Shader\ShaderManager.h" />
     <ClInclude Include="src\Library\Shader\VertexShader.h" />
+    <ClInclude Include="src\Library\Utility\Collision.h" />
     <ClInclude Include="src\Library\Utility\Singleton.h" />
     <ClInclude Include="src\Library\WindowsAPI\Input.h" />
     <ClInclude Include="src\Library\WindowsAPI\Mouse.h" />

@@ -41,6 +41,8 @@ namespace engine
 		*/
 		void RenderObj(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_);
 
+		Obj* GetObj(const std::string& name_) { return m_objList.at(name_); }
+
 	private:
 		/// obj情報保存
 		std::map<std::string, Obj*> m_objList;

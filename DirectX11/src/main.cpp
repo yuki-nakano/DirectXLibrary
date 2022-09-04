@@ -10,15 +10,15 @@ int WINAPI WinMain(
 {
 	// ライブラリ初期化
 	if (!engine::Library::Init("test", 640, 480)) { return 0; }
-	engine::Library::LoadObj("res/Cube.obj", "hikouki");
+	engine::Library::LoadObj("res/BirchTree_1.obj", "hikouki");
 	engine::Library::LoadTexture(L"res/test.png", "texture");
 
 	std::vector<int> keyList = { KEY_A ,KEY_D, KEY_W, KEY_S };
 	engine::Library::RegisterKey(keyList);
 
 	engine::Vec3f pos(0, -10, 0);
-	engine::Vec3f rote(0, 0, 0);
-	engine::Vec3f scale(8, 8, 8);
+	engine::Vec3f rote(0, 45, 0);
+	engine::Vec3f scale(5, 5, 5);
 
 	int count = 0;
 
@@ -35,7 +35,7 @@ int WINAPI WinMain(
 		rote.y += 1;
 		engine::Library::RenderObj("hikouki", pos, rote, scale);
 
-		//engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 100, 100, 0.0f, 0.2f);
+		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 100, 100, 0.0f, 0.2f);
 
 		engine::KeyState keystate = engine::Library::GetKeyState(KEY_A);
 
@@ -63,7 +63,7 @@ int WINAPI WinMain(
 		int tmp = count / 60;
 		std::wstring time = std::to_wstring(tmp);
 		engine::Library::DrawTextData(time, engine::Vec2f(0, 0));
-		engine::Library::DrawTextData(time, engine::Vec2f(0, 100));
+		//engine::Library::DrawTextData(time, engine::Vec2f(0, 100));
 
 
 		//描画終了

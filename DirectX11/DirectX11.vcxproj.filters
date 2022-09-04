@@ -85,6 +85,9 @@
     <ClCompile Include="src\Library\DirectX\Direct2D.cpp">
       <Filter>Library\DirectX</Filter>
     </ClCompile>
+    <ClCompile Include="src\Library\Utility\Collision.cpp">
+      <Filter>Library\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Library\DirectX\DirectXGraphics.h">
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="src\Library\DirectX\Direct2D.h">
       <Filter>Library\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Library\Utility\Collision.h">
+      <Filter>Library\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

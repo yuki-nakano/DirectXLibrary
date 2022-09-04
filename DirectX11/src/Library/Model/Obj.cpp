@@ -18,14 +18,12 @@ namespace engine
 
 	bool Obj::Load(const std::string& file_name_)
 	{
-		std::vector<CustomVertex> customVertex;
-
-		if (!AnalyzeObjData(file_name_, customVertex)) { return false; }
+		if (!AnalyzeObjData(file_name_, m_customVertex)) { return false; }
 
 		if (!AnalyzeMtlData(file_name_)) { return false; }
 
 		D3D11_BUFFER_DESC vertexBufferDesc = {
-			sizeof(CustomVertex) * (UINT)customVertex.size(),
+			sizeof(CustomVertex) * (UINT)m_customVertex.size(),
 			D3D11_USAGE_DEFAULT,
 			D3D11_BIND_VERTEX_BUFFER,
 			0,
@@ -33,7 +31,7 @@ namespace engine
 			0 };
 
 		D3D11_SUBRESOURCE_DATA vertexSubresData = {
-			&customVertex[0],
+			&m_customVertex[0],
 			0,
 			0 };
 
@@ -145,6 +143,7 @@ namespace engine
 			UINT offsets = 0;
 			context->IASetInputLayout(m_inputLayout);
 			context->IASetIndexBuffer(m_indexBufferList.at(count), DXGI_FORMAT_R32_UINT, 0);
+			context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 			context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &strides, &offsets);
 			context->VSSetConstantBuffers(0, 1, &m_constantBuffer);
 			context->PSSetConstantBuffers(0, 1, &m_constantBuffer);
