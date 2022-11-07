@@ -47,6 +47,7 @@ namespace engine
 			DirectX::XMFLOAT4 LightCol;	/// ライト色行列
 			DirectX::XMFLOAT4 mtlDiffuse;	/// ディフューズ
 			DirectX::XMFLOAT4 mtlAmbient;	/// アンビエント
+			DirectX::XMFLOAT4 col;		/// 色
 		};
 
 		struct MtlDate
@@ -81,7 +82,17 @@ namespace engine
 		* @param rote_ 角度
 		* @param scale_ 大きさ
 		*/
-		void Render(Vec3f pos_, Vec3f rote_, Vec3f scale_);
+		void Render(const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_);
+
+		/**
+		* @brief objモデルの描画
+		* @param pos_ 移動量
+		* @param rote_ 角度
+		* @param scale_ 大きさ
+		* @param color_ 色
+		* @param alpha_ 透過
+		*/
+		void RenderSetColor(const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_, const Vec3f& color_, const float& alpha_ = 1.0f);
 
 	private:
 		/**

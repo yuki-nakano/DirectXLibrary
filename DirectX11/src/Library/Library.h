@@ -216,8 +216,17 @@ namespace engine
 		/**
 		* @brief obj描画
 		* @param obj呼び出し時の名前
+		* @param pos_ 移動量
+		* @param rote_ 角度
+		* @param scale_ 大きさ
 		*/
-		static void RenderObj(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_) { m_instance->obj->RenderObj(name_, pos_, rote_, scale_); }
+		static void RenderObj(const std::string& name_, const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_) { m_instance->obj->Render(name_, pos_, rote_, scale_); }
+
+		/**
+		* @brief obj描画
+		* @param obj呼び出し時の名前
+		*/
+		static void RenderObjSetColor(const std::string& name_, const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_, const Vec3f& color_, const float& alpha_ = 1.0f) { m_instance->obj->RenderSetColor(name_, pos_, rote_, scale_, color_, alpha_); }
 
 		/**
 		* @brief 読み込んだobjファイルの解放

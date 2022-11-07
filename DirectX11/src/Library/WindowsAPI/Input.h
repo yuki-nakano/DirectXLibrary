@@ -77,8 +77,8 @@ namespace engine
 }
 
 //WinUser.h参照でも可
-#define KEY_LMOUSE	0x01	// right mouse
-#define KEY_RMOUSE	0x02	// left mouse
+#define KEY_LMOUSE	0x01	// left mouse
+#define KEY_RMOUSE	0x02	// right mouse
 #define KEY_TAB		0x09	// TAB key
 #define KEY_ENTER	0x0D	// ENTER key
 #define KEY_SHIFT	0x10	// SHIFT key
