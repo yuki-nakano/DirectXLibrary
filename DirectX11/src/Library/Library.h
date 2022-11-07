@@ -194,6 +194,11 @@ namespace engine
 		*/
 		static void DrawTexture(const std::string& name_, const Vec2f& pos_, const float& width_, const float& height_, const float& degree_ = 0.0f, const float& alpha_ = 1.0f) { m_instance->texture->DrawTexture(name_, pos_, width_, height_, degree_, alpha_); }
 
+		/**
+		* @brief テクスチャの解放
+		* @param name_ LoadTexture関数で登録した名前
+		*/
+		static void ReleseTexture(const std::string& name_) { m_instance->texture->ReleseTexture(name_); }
 
 		//------------------------------------------------------------
 		//   Obj
