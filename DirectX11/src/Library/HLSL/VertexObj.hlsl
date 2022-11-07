@@ -8,6 +8,7 @@ cbuffer ConstantBuffer
 	float4 LightColor;
 	float4 ambient;
 	float4 diffuse;
+	float4 col;
 };
 
 struct VSInput
@@ -15,7 +16,6 @@ struct VSInput
 	float4 pos : POSITION0;
 	float4 nor : NORMAL;
 	float4 tex : TEXTURE;
-
 };
 
 struct VSOutput
@@ -42,9 +42,11 @@ VSOutput main(VSInput input)
 	// saturate:引数で指定した値を0～1間での範囲に収める
 	float rad = saturate(dot(normal, LightVector));
 
-	// ライトのカラー * 光のあたり加減
-	output.col = LightColor * rad;
-	output.col[3] = 1.0f;
+	output.col = col;
+
+	// ライトのカラー* 光のあたり加減
+	output.col += LightColor * rad;
+	output.col[3] = col[3];
 
 	return output;
 }

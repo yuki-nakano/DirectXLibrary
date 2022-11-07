@@ -163,6 +163,7 @@ namespace engine
 		memcpy(mappedRes.pData, vertexList, sizeof(vertexList));
 		context_->Unmap(m_vertexBuffer, 0);
 	}
+
 	void Graphics2D::SetUpContext(ID3D11DeviceContext* context_)
 	{
 		DirectXGraphics::GetInstance()->SetUpContext(m_vShaderName, m_pShaderName);

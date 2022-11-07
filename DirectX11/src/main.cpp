@@ -33,9 +33,10 @@ int WINAPI WinMain(
 		//engine::Library::DrawRect(engine::Vec2f(100.0f, 100.0f), 100, 100, engine::Vec3f(0.0f, 0.0f, 1.0f), 0.3f, 0.0f);
 
 		rote.y += 1;
-		engine::Library::RenderObj("hikouki", pos, rote, scale);
+		engine::Library::RenderObjSetColor("hikouki", pos, rote, scale, engine::Vec3f(1.0f, 0.0f, 0.0f));
 
-		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 100, 100, 0.0f, 0.2f);
+		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 500, 100, 0.0f, 1.0f);
+		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 1000, 100, 0.0f, 1.0f);
 
 		engine::KeyState keystate = engine::Library::GetKeyState(KEY_A);
 

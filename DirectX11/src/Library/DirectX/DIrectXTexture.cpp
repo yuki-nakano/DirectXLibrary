@@ -70,7 +70,7 @@ namespace engine
 		DirectXGraphics::GetInstance()->SetUpBlendState();
 
 		// GPUへ送るデータの設定
-		DirectXGraphics::GetInstance()->SetUpContext(m_vShaderName, m_pShaderName);
+		DirectXGraphics::GetInstance()->SetUpContext2D(m_vShaderName, m_pShaderName);
 
 		UINT strides = sizeof(CustomVertex);
 		UINT offsets = 0;

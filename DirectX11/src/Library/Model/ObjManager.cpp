@@ -28,9 +28,14 @@ namespace engine
 		m_objList.erase(name_);
 	}
 
-	void ObjManager::RenderObj(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_)
+	void ObjManager::Render(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_)
 	{
 		m_objList.at(name_)->Render(pos_, rote_, scale_);
+	}
+
+	void ObjManager::RenderSetColor(const std::string& name_, const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_, const Vec3f& color_, const float& alpha_)
+	{
+		m_objList.at(name_)->RenderSetColor(pos_, rote_, scale_, color_, alpha_);
 	}
 
 }

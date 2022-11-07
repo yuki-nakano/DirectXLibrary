@@ -19,11 +19,6 @@ struct PSInput
 
 float4 main(PSInput input) : SV_TARGET
 {
-	//float4 i = LightVector * ambient;
-	//i[3] = 1.0f;
-
-	//return i;
-
 	float material_ambient_power = 1.0;
 	float material_diffuse_power = 1.0;
 	float total_power = material_ambient_power + material_diffuse_power;

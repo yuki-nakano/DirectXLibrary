@@ -38,8 +38,23 @@ namespace engine
 		/**
 		* @brief obj描画
 		* @param obj呼び出し時の名前
+		* @param pos_ 移動量
+		* @param rote_ 角度
+		* @param scale_ 大きさ
+
 		*/
-		void RenderObj(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_);
+		void Render(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_);
+
+		/**
+		* @brief obj描画
+		* @param obj呼び出し時の名前
+		* @param pos_ 移動量
+		* @param rote_ 角度
+		* @param scale_ 大きさ
+		* @param color_ 色
+		* @param alpha_ 透過
+		*/
+		void RenderSetColor(const std::string& name_, const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_, const Vec3f& color_, const float& alpha_ = 1.0f);
 
 		Obj* GetObj(const std::string& name_) { return m_objList.at(name_); }
 

@@ -52,6 +52,13 @@ namespace engine
 		*/
 		void SetUpContext(const std::string& v_shader_name_, const std::string& p_shader_name_);
 
+		/**
+		* @brief GUI送信用データの設定(2D)
+		* @param v_shader_name_ 登録したvertexシェーダーの名前
+		* @param p_shader_name_ 登録したpixelシェーダーの名前
+		*/
+		void SetUpContext2D(const std::string& v_shader_name_, const std::string& p_shader_name_);
+
 		//アクセサ
 
 		ID3D11Device* GetDevice() const { return m_device; }

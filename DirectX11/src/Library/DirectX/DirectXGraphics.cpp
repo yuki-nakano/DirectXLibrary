@@ -75,6 +75,15 @@ namespace engine
 		m_context->PSSetShader(ShaderManager::GetInstance()->GetPixelInterface(p_shader_name_), NULL, 0);
 	}
 
+	void DirectXGraphics::SetUpContext2D(const std::string& v_shader_name_, const std::string& p_shader_name_)
+	{
+		m_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		m_context->OMSetRenderTargets(1, &m_renderTargetView, NULL);
+
+		m_context->VSSetShader(ShaderManager::GetInstance()->GetVertexInterface(v_shader_name_), NULL, 0);
+		m_context->PSSetShader(ShaderManager::GetInstance()->GetPixelInterface(p_shader_name_), NULL, 0);
+	}
+
 	bool DirectXGraphics::CreateDeviceAndSwapChain()
 	{
 		HWND windowHandle = FindWindow(WindowsAPI::m_windowClassName.c_str(), nullptr);

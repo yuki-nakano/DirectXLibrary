@@ -99,7 +99,7 @@ namespace engine
 		return true;
 	}
 
-	void Obj::Render(Vec3f pos_, Vec3f rote_, Vec3f scale_)
+	void Obj::Render(const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_)
 	{
 		ID3D11DeviceContext* context = DirectXGraphics::GetInstance()->GetContext();
 
@@ -115,6 +115,64 @@ namespace engine
 		DirectX::XMVECTOR light = Matrix::GetInstance()->CreateLightPosMatrix();
 		DirectX::XMStoreFloat4(&constantBuffer.LightVec, light);
 		constantBuffer.LightCol = Matrix::GetInstance()->CreateLightColMatrix();
+
+		constantBuffer.col = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f);
+
+		int count{ 0 };
+		for (auto index : m_mtlIndex)
+		{
+			if (m_isAttachedMtl)
+			{
+				auto mtlData = m_mtlDataList.at(index.first);
+				constantBuffer.mtlAmbient = DirectX::XMFLOAT4(mtlData.Ka.at(0), mtlData.Ka.at(1), mtlData.Ka.at(2), 1.0f);
+				constantBuffer.mtlDiffuse = DirectX::XMFLOAT4(mtlData.Kd.at(0), mtlData.Kd.at(1), mtlData.Kd.at(2), 1.0f);
+			}
+			else
+			{
+				constantBuffer.mtlAmbient = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+				constantBuffer.mtlDiffuse = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+			}
+
+			context->UpdateSubresource(m_constantBuffer, 0, NULL, &constantBuffer, 0, 0);
+
+			// 透過の設定
+			DirectXGraphics::GetInstance()->SetUpBlendState();
+
+			// GPUへ送るデータの設定
+			DirectXGraphics::GetInstance()->SetUpContext(m_vShaderName, m_pShaderName);
+
+			UINT strides = sizeof(CustomVertex);
+			UINT offsets = 0;
+			context->IASetInputLayout(m_inputLayout);
+			context->IASetIndexBuffer(m_indexBufferList.at(count), DXGI_FORMAT_R32_UINT, 0);
+			context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+			context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &strides, &offsets);
+			context->VSSetConstantBuffers(0, 1, &m_constantBuffer);
+			context->PSSetConstantBuffers(0, 1, &m_constantBuffer);
+
+			context->DrawIndexed(index.second.size(), 0, 0);
+			count++;
+		}
+	}
+	
+	void Obj::RenderSetColor(const Vec3f& pos_, const Vec3f& rote_, const Vec3f& scale_, const Vec3f& color_, const float& alpha_)
+	{
+		ID3D11DeviceContext* context = DirectXGraphics::GetInstance()->GetContext();
+
+		DirectX::XMMATRIX world = Matrix::GetInstance()->CreateWorldMatrix(pos_, rote_, scale_);
+		DirectX::XMMATRIX view = Matrix::GetInstance()->CreateViewMatrix();
+		DirectX::XMMATRIX proj = Matrix::GetInstance()->CreateProjMatrix();
+
+		ConstantBuffer constantBuffer;
+		DirectX::XMStoreFloat4x4(&constantBuffer.world, DirectX::XMMatrixTranspose(world));
+		DirectX::XMStoreFloat4x4(&constantBuffer.view, DirectX::XMMatrixTranspose(view));
+		DirectX::XMStoreFloat4x4(&constantBuffer.proj, DirectX::XMMatrixTranspose(proj));
+
+		DirectX::XMVECTOR light = Matrix::GetInstance()->CreateLightPosMatrix();
+		DirectX::XMStoreFloat4(&constantBuffer.LightVec, light);
+		constantBuffer.LightCol = Matrix::GetInstance()->CreateLightColMatrix();
+
+		constantBuffer.col = DirectX::XMFLOAT4(color_.x, color_.y, color_.z, alpha_);
 
 		int count{ 0 };
 		for (auto index : m_mtlIndex)
