@@ -35,7 +35,7 @@ namespace engine
 			return false;
 		}
 
-		texList.emplace(name_, textureView);
+		texList.try_emplace(name_, textureView);
 
 		return true;
 	}
@@ -88,6 +88,7 @@ namespace engine
 	void DirectXTexture::ReleseTexture(const std::string& name_)
 	{
 		texList.at(name_)->Release();
+		texList.erase(name_);
 	}
 
 	bool DirectXTexture::CreateVertexBuffer()

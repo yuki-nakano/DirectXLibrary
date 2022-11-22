@@ -16,7 +16,7 @@ namespace engine
 
 		if (!obj->Load(file_name_)) { return false; }
 
-		m_objList.emplace(name_, obj);
+		m_objList.try_emplace(name_, obj);
 
 		return true;
 	}
