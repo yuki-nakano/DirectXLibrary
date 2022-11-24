@@ -267,7 +267,7 @@ namespace engine
 		* @param near_ 手前のz座標
 		* @param far_ 奥のz座標
 		*/
-		static void SetZ(const float& near_, const float& far_) { m_instance->camera->SetZ(near_, far_); }
+		static void SetDrawingDistance(const float& near_, const float& far_) { m_instance->camera->SetZ(near_, far_); }
 
 		/**
 		* @brief カメラの座標の取得
