@@ -41,7 +41,6 @@ namespace engine
 		* @param pos_ 移動量
 		* @param rote_ 角度
 		* @param scale_ 大きさ
-
 		*/
 		void Render(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_);
 

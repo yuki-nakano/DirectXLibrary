@@ -13,6 +13,7 @@
 #include "WindowsAPI/Input.h"
 #include "WindowsAPI/Mouse.h"
 #include "Model/ObjManager.h"
+#include "Model/FbxManager.h"
 #include "Model/Camera.h"
 #include "Model/Light.h"
 #include "DirectX/Matrix.h"
@@ -200,6 +201,7 @@ namespace engine
 		*/
 		static void ReleseTexture(const std::string& name_) { m_instance->texture->ReleseTexture(name_); }
 
+
 		//------------------------------------------------------------
 		//   Obj
 		//------------------------------------------------------------
@@ -238,6 +240,34 @@ namespace engine
 		* @param name_ LoadObj関数で登録した名前
 		*/
 		static void ReleseObj(const std::string& name_) { m_instance->obj->DeleteObj(name_); }
+
+
+		//------------------------------------------------------------
+		//   Fbx
+		//------------------------------------------------------------
+
+		/**
+		* @brief fbxファイルの読み込みファイルの読み込み
+		* @param file_name_ 読み込むfbxファイルパス
+		* @param name_　fbx呼び出し時の名前
+		* @return fbx読み込み成功時true
+		*/
+		static bool LoadFbx(const std::string& file_name_, const std::string& name_) { return m_instance->fbx->LoadFbx(file_name_, name_); }
+
+		/**
+		* @brief 読み込んだobjの削除
+		* @param LoadFbx関数で登録した名前
+		*/
+		static void DeleteFbx(const std::string& name_) { m_instance->fbx->DeleteFbx(name_); }
+
+		/**
+		* @brief fbx描画
+		* @param fbx呼び出し時の名前
+		* @param pos_ 移動量
+		* @param rote_ 角度
+		* @param scale_ 大きさ
+		*/
+		static void RenderFbx(const std::string& name_, Vec3f pos_, Vec3f rote_, Vec3f scale_) { m_instance->fbx->Render(name_, pos_, rote_, scale_); }
 
 
 		//------------------------------------------------------------
@@ -306,6 +336,7 @@ namespace engine
 		Direct2D* direct2D{ nullptr };
 		DirectXTexture* texture{ nullptr };
 		ObjManager* obj{ nullptr };
+		FBXManager* fbx{ nullptr };
 		Camera* camera{ nullptr };
 		Light* light{ nullptr };
 		Matrix* matrix{ nullptr };

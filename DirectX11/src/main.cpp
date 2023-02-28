@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "Library/Model/Fbx.h"
+
 int WINAPI WinMain(
 	_In_ HINSTANCE hInstace,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -14,13 +16,12 @@ int WINAPI WinMain(
 	engine::Library::LoadTexture(L"res/test.png", "texture");
 
 	std::vector<int> keyList = { KEY_A ,KEY_D, KEY_W, KEY_S };
-	engine::Library::RegisterKey(keyList);
 
-	engine::Vec3f pos(0, -10, 0);
-	engine::Vec3f rote(0, 45, 0);
-	engine::Vec3f scale(5, 5, 5);
+	float count{ 0.0f };
 
-	int count = 0;
+	engine::Library::SetCameraPos(engine::Vec4f(0.0f, 100.0f, 200.0f));
+	engine::Library::SetFocusPos(engine::Vec4f(0.0f, 100.0f, 0.0f));
+	engine::Library::SetDrawingDistance(0.1f, 1000.0f);
 
 	while (engine::Library::CheckMessage())
 	{
@@ -29,42 +30,6 @@ int WINAPI WinMain(
 
 		// 描画開始
 		engine::Library::StartRendering();
-
-		//engine::Library::DrawRect(engine::Vec2f(100.0f, 100.0f), 100, 100, engine::Vec3f(0.0f, 0.0f, 1.0f), 0.3f, 0.0f);
-
-		rote.y += 1;
-		engine::Library::RenderObjSetColor("hikouki", pos, rote, scale, engine::Vec3f(1.0f, 0.0f, 0.0f));
-
-		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 500, 100, 0.0f, 1.0f);
-		engine::Library::DrawTexture("texture", engine::Vec2f(0.0f, 0.0f), 1000, 100, 0.0f, 1.0f);
-
-		engine::KeyState keystate = engine::Library::GetKeyState(KEY_A);
-
-		switch (keystate)
-		{
-		case engine::KeyState::Not:
-			//engine::Library::RenderObj("hikouki", pos, rote, scale);
-			break;
-		case engine::KeyState::Held:
-			pos.z -= 1.0f;
-			//engine::Library::RenderObj("hikouki", pos, rote, scale);
-			break;
-		case engine::KeyState::Pushed:
-			pos.x += 1.0f;
-			engine::Library::RenderObj("hikouki", pos, rote, scale);
-			break;
-		case engine::KeyState::Relesed:
-			engine::Library::RenderObj("hikouki", pos, rote, scale);
-			break;
-		default:
-			break;
-		}
-
-		count++;
-		int tmp = count / 60;
-		std::wstring time = std::to_wstring(tmp);
-		engine::Library::DrawTextData(time, engine::Vec2f(0, 0));
-		//engine::Library::DrawTextData(time, engine::Vec2f(0, 100));
 
 
 		//描画終了

@@ -18,6 +18,7 @@ namespace engine
 		direct2D = Direct2D::CreateInstance();
 		texture = DirectXTexture::CreateInstance();
 		obj = ObjManager::CreateInstance();
+		fbx = FBXManager::CreateInstance();
 	}
 
 	Library::~Library()
@@ -33,6 +34,7 @@ namespace engine
 		graphics2d->DeleteInstance();
 		texture->DeleteInstance();
 		obj->DeleteInstance();
+		fbx->DeleteInstance();
 
 		input = nullptr;
 		mouse = nullptr;
@@ -45,6 +47,7 @@ namespace engine
 		graphics2d = nullptr;
 		texture = nullptr;
 		obj = nullptr;
+		fbx = nullptr;
 	}
 
 	bool Library::Init(const std::string& window_name_, const int& widht_, const int& height_)
@@ -66,6 +69,8 @@ namespace engine
 		m_instance->texture->Init();
 
 		m_instance->direct2D->Init();
+
+		m_instance->fbx->Init();
 
 		return true;
 	}

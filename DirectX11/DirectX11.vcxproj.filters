@@ -23,11 +23,11 @@
     <Filter Include="Library\HLSL">
       <UniqueIdentifier>{c714357b-7565-445e-b43a-0a728efcaeb5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\Lib">
-      <UniqueIdentifier>{f61594d1-4aec-4d5c-9c6a-5859ee254975}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\Utility">
       <UniqueIdentifier>{dff11f9b-317c-4f62-9d6d-30adbe1a3a12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Lib">
+      <UniqueIdentifier>{0e279254-3836-4e13-95b4-03aa335d2b31}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,9 +70,6 @@
     <ClCompile Include="src\Library\DirectX\Matrix.cpp">
       <Filter>Library\DirectX</Filter>
     </ClCompile>
-    <ClCompile Include="src\Library\Lib\WICTextureLoader11.cpp">
-      <Filter>Library\Lib</Filter>
-    </ClCompile>
     <ClCompile Include="src\Library\WindowsAPI\Mouse.cpp">
       <Filter>Library\WindowsAPI</Filter>
     </ClCompile>
@@ -84,6 +81,15 @@
     </ClCompile>
     <ClCompile Include="src\Library\DirectX\Direct2D.cpp">
       <Filter>Library\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Library\Model\FbxManager.cpp">
+      <Filter>Library\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Library\Lib\WICTextureLoader11.cpp">
+      <Filter>Library\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Library\Model\Fbx.cpp">
+      <Filter>Library\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,9 +135,6 @@
     <ClInclude Include="src\Library\DirectX\DirectXTexture.h">
       <Filter>Library\DirectX</Filter>
     </ClInclude>
-    <ClInclude Include="src\Library\Lib\WICTextureLoader11.h">
-      <Filter>Library\Lib</Filter>
-    </ClInclude>
     <ClInclude Include="src\Library\WindowsAPI\Mouse.h">
       <Filter>Library\WindowsAPI</Filter>
     </ClInclude>
@@ -146,6 +149,15 @@
     </ClInclude>
     <ClInclude Include="src\Library\DirectX\Direct2D.h">
       <Filter>Library\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Library\Model\FbxManager.h">
+      <Filter>Library\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Library\Lib\WICTextureLoader11.h">
+      <Filter>Library\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Library\Model\Fbx.h">
+      <Filter>Library\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

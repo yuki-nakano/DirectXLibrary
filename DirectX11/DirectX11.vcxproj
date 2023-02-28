@@ -27,6 +27,8 @@
     <ClCompile Include="src\Library\Library.cpp" />
     <ClCompile Include="src\Library\Lib\WICTextureLoader11.cpp" />
     <ClCompile Include="src\Library\Model\Camera.cpp" />
+    <ClCompile Include="src\Library\Model\Fbx.cpp" />
+    <ClCompile Include="src\Library\Model\FbxManager.cpp" />
     <ClCompile Include="src\Library\Model\Obj.cpp" />
     <ClCompile Include="src\Library\Model\ObjManager.cpp" />
     <ClCompile Include="src\Library\Shader\PixelShader.cpp" />
@@ -48,6 +50,8 @@
     <ClInclude Include="src\Library\Library.h" />
     <ClInclude Include="src\Library\Lib\WICTextureLoader11.h" />
     <ClInclude Include="src\Library\Model\Camera.h" />
+    <ClInclude Include="src\Library\Model\Fbx.h" />
+    <ClInclude Include="src\Library\Model\FbxManager.h" />
     <ClInclude Include="src\Library\Model\Light.h" />
     <ClInclude Include="src\Library\Model\Obj.h" />
     <ClInclude Include="src\Library\Model\ObjManager.h" />
@@ -190,9 +194,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)FBXSDK\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)FBXSDK\x64\debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)FBXSDK\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)FBXSDK\x64\relese;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -236,13 +244,14 @@ copy "$(TargetDir)*.cso" %OUTPUT_DIRECTORY%</Command>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Lib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Lib\Lib\DirectXTex\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib-md.lib;libxml2-md.lib;libfbxsdk-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>set OUTPUT_DIRECTORY="src/Library/cso"
@@ -266,6 +275,7 @@ copy "$(TargetDir)*.cso" %OUTPUT_DIRECTORY%</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Lib\Lib\DirectXTex\x64\Relese;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib-md.lib;libxml2-md.lib;libfbxsdk-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
